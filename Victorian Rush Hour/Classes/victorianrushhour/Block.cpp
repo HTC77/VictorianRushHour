@@ -5,6 +5,7 @@
 #include "Block.h"
 
 Block::~Block () {
+    
 }
 
 Block::Block () {
@@ -22,8 +23,7 @@ Block * Block::create () {
     
     Block * block = new Block();
 	if (block && block->initWithFile("blank.png")) {
-		block->initBlock();
-        block->autorelease();
+		block->autorelease();
 		return block;
 	}
 	CC_SAFE_DELETE(block);
@@ -31,41 +31,45 @@ Block * Block::create () {
 }
 
 
-void Block::setupBlock (int width, int height, int type)
-{
+void Block::setupBlock (int width, int height, int type) {
+    
     _type = type;
     
     _width = width * _tileWidth;
     _height = height * _tileHeight;
     
-    //anchor point is set to top left
-    this->setAnchorPoint(ccp(0, 0));
+    this->setAnchorPoint(ccp(0,0));
     this->setTextureRect(CCRectMake(0, 0, _width, _height));
     
-    //set the block color based on type
-    
-    switch(type)
-    {
+    switch (type) {
+            
         case kBlockGap:
             this->setVisible(false);
             return;
             
         case kBlock1:
-            this->setColor(ccc3(200, 200, 200)); break;
+            
+            this->setColor(ccc3(200,200,200));
+            
+            break;
         case kBlock2:
-            this->setColor(ccc3(150, 150, 150)); break;
+            
+            this->setColor(ccc3(150,150,150));
+            
+            break;
         case kBlock3:
-            this->setColor(ccc3(100, 100, 100)); break;
+            
+            this->setColor(ccc3(100,100,100));
+            
+            break;
         case kBlock4:
-            this->setColor(ccc3(50,50,50));break;
+            
+            this->setColor(ccc3(50,50,50));
+            
+            break;
     }
     
     this->setVisible(true);
-   
-}
-
-void Block::initBlock() {
-    
     
 }
 
